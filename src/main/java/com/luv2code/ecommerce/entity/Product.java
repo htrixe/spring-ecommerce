@@ -1,21 +1,16 @@
-package com.example.ecommerce.entity;
+package com.luv2code.ecommerce.entity;
 
-import lombok.*;
-import org.hibernate.Hibernate;
+import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
-import java.util.Objects;
 
 @Entity
 @Table(name="product")
-@Getter
-@Setter
-@ToString
-@RequiredArgsConstructor
+@Data
 public class Product {
 
     @Id
@@ -55,17 +50,4 @@ public class Product {
     @Column(name = "last_updated")
     @UpdateTimestamp
     private Date lastUpdated;
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        Product product = (Product) o;
-        return id != null && Objects.equals(id, product.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return getClass().hashCode();
-    }
 }
